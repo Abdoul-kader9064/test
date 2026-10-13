@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="conteneur">
+        <h2> Text Analyser </h2>
+        <p> Enter your text below</p>
+    
+
+    <input type="text" id="texteInput" placeholder="Enter here..">
+    <br>
+
+    <button onclick="analyserTexte()">ANALYSER</button>
+    <div id="resultat"></div>
+    
+
+    </div>  
+
+    <script>
+      function analyserTexte(){
+
+        const inputElement= document.getElementById('texteInput');
+        const texte= inputElement.value.trim(); // trim removes extra spaces from the start and end of a text
+        const divResultat = document.getElementById('resultat');
+        
+
+        // reintialiser les messages 
+        divResultat.textContent= "";
+        
+
+        if (texte===""){
+            alert("please enter a text")
+            return;
+        }
+        const word = texte.split(/\s+/);  // replace(/\s+/g, "") pour remplacer les espaces vides entre les mots 
+        let message = ""; // split cuts a text into pieces and puts them in an array
+        
+        if ( word.length=== 1 ){
+            const longueur = texte.length;
+            message = "your word contain " + longueur + " characters.";
+
+        } else {
+
+            const longueur = texte.length;
+            message = "your text contain " +word.length+" words , <br> the total length of the text is : "+longueur;
+        }
+
+        divResultat.innerHTML= message;
+
+      }
+
+
+    </script>
+</body>
+</html>
